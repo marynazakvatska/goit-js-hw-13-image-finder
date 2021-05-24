@@ -42,6 +42,9 @@ img {
   margin-left: auto;
   margin-right: auto;
 }
-.loadbtn {
-  align-items: center;
+
+.search-form {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
