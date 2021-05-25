@@ -21,6 +21,12 @@ const listEl = document.createElement("ul");
 listEl.classList.add("gallery");
 document.body.append(listEl);
 
+const loadMoreBtn = document.createElement("button");
+loadMoreBtn.classList.add("loadbtn");
+hide();
+loadMoreBtn.textContent = "Load more";
+document.body.append(loadMoreBtn);
+
 refs.searchForm.addEventListener("submit", onSearch);
 
 function onSearch(e) {
@@ -35,24 +41,23 @@ function onSearch(e) {
     return alert("Add something...please");
   }
 
+  setTimeout(() => {
+    show();
+  }, 500);
+
   apiService.resetPage();
   apiService.fetchPicture().then((hits) => {
     clearCardList();
     picMarkup(hits);
   });
-  show();
 }
 
-const loadMoreBtn = document.createElement("button");
-loadMoreBtn.classList.add("loadbtn");
-loadMoreBtn.textContent = "Load more";
-document.body.append(loadMoreBtn);
 loadMoreBtn.addEventListener("click", () => {
   apiService.fetchPicture().then((hits) => {
     picMarkup(hits);
   });
 });
-hide();
+
 function picMarkup(hits) {
   listEl.insertAdjacentHTML("beforeend", pictureCardTmpl(hits));
   onLoadMore();
@@ -76,4 +81,10 @@ function show() {
 }
 function hide() {
   loadMoreBtn.classList.add("is-hidden");
+}
+function disable() {
+  loadMoreBtn.disabled = true;
+}
+function enable() {
+  loadMoreBtn.disabled = false;
 }
