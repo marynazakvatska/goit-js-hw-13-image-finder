@@ -20,22 +20,18 @@ const refs = {
 const listEl = document.createElement("ul");
 listEl.classList.add("gallery");
 document.body.append(listEl);
-const loadMoreBtn = document.createElement("button");
-loadMoreBtn.classList.add("loadbtn");
-loadMoreBtn.textContent = "Load more";
-document.body.append(loadMoreBtn);
+
 refs.searchForm.addEventListener("submit", onSearch);
-loadMoreBtn.addEventListener("click", () => {
-  apiService.fetchPicture().then((hits) => {
-    picMarkup(hits);
-  });
-});
 
 function onSearch(e) {
   e.preventDefault();
+
   console.log(e.target);
   apiService.searchQuery = e.currentTarget.elements.query.value;
-  if (apiService.searchQuery === "") {
+  if (
+    e.currentTarget.elements.query.value[0] === " " ||
+    e.currentTarget.elements.query.value === ""
+  ) {
     return alert("Add something...please");
   }
 
@@ -44,19 +40,25 @@ function onSearch(e) {
     clearCardList();
     picMarkup(hits);
   });
-  /*   show(); */
 }
+
+const loadMoreBtn = document.createElement("button");
+loadMoreBtn.classList.add("loadbtn");
+loadMoreBtn.textContent = "Load more";
+document.body.append(loadMoreBtn);
+loadMoreBtn.addEventListener("click", () => {
+  apiService.fetchPicture().then((hits) => {
+    picMarkup(hits);
+  });
+});
 
 function picMarkup(hits) {
   listEl.insertAdjacentHTML("beforeend", pictureCardTmpl(hits));
+
   window.scrollTo({
-    top: document.documentElement.offsetHeight,
+    top: listEl.scrollHeight,
     behavior: "smooth",
   });
-  /* window.scrollTo({
-    top: document.documentElement.offsetHeight,
-    behavior: "smooth",
-  }); */
 }
 
 function clearCardList() {

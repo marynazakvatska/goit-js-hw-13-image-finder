@@ -35,7 +35,7 @@ img {
   padding: 10px;
 }
 .container {
-  width: 1250px;
+  margin: 10px auto;
 }
 .search-form {
   margin-left: auto;
@@ -72,4 +72,17 @@ img {
   background-color: #ff6347;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+}
+.photo-card {
+  background-color: rgb(158, 94, 105);
+  margin: 10px;
+  border-radius: 10px;
+}
+.stats-item {
+  margin: 4px;
+}
+.stats {
+  display: inline-flex;
+  margin-left: auto;
+  margin-right: auto;
 }
