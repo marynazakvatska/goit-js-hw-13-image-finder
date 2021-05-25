@@ -30,22 +30,3 @@ export default class ApiService {
     this.page = 1;
   }
 }
-
-/* function fetchPicture() {
-  const options = {
-    headers: {
-      Authorization: "21675881-9f2314d809854342b3af65054",
-    },
-  };
-
-  const url = `https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12`;
-
-  fetch(url, options)
-    .then((r) => r.json())
-    .then((data) => {
-      console.log(data);
-      this.incrementPage();
-    });
-}
-console.log(fetchPicture());
- */

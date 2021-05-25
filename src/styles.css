@@ -13,11 +13,7 @@ body {
     Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
-  /*
-   * CSS image reference example.
-   */
-  /* background-image: url("./images/bg-pattern.png"); */
-  background-color: #40e0d0;
+  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
 }
 ul {
   display: flex;
@@ -33,7 +29,10 @@ ul {
 } */
 img {
   display: block;
-  margin-right: 20px;
+
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 10px;
 }
 .container {
   width: 1250px;
@@ -47,4 +46,30 @@ img {
   text-align: center;
   margin-top: 30px;
   margin-bottom: 30px;
+}
+.loadbtn {
+  display: block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+
+  margin: auto auto;
+}
+
+.loadbtn:hover {
+  background-color: #ff6347;
+}
+
+.loadbtn:active {
+  background-color: #ff6347;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }

@@ -30,15 +30,7 @@ refs.searchForm.addEventListener("submit", onSearch);
 loadMoreBtn.addEventListener("click", () => {
   apiService.fetchPicture().then((hits) => {
     picMarkup(hits);
-    /*   window.scrollTo({
-      top: document.documentElement.offsetHeight,
-      behavior: "smooth",
-    }); */
   });
-  /* window.scrollTo({
-    top: document.documentElement.offsetHeight,
-    behavior: "smooth",
-  }); */
 });
 
 function onSearch(e) {
@@ -48,15 +40,13 @@ function onSearch(e) {
   if (apiService.searchQuery === "") {
     return alert("Add something...please");
   }
+  
   apiService.resetPage();
   apiService.fetchPicture().then((hits) => {
     clearCardList();
     picMarkup(hits);
   });
-  window.scrollTo({
-    top: 150,
-    behavior: "smooth",
-  });
+  loadMoreBtn.hide();
 }
 
 function picMarkup(hits) {
@@ -73,4 +63,11 @@ function picMarkup(hits) {
 
 function clearCardList() {
   listEl.innerHTML = "";
+}
+
+function show() {
+  loadMoreBtn.classList.remove("is-hidden");
+}
+function hide() {
+  loadMoreBtn.classList.add("is-hidden");
 }
