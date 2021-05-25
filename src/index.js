@@ -22,7 +22,7 @@ listEl.classList.add("gallery");
 document.body.append(listEl);
 
 refs.searchForm.addEventListener("submit", onSearch);
-hide();
+
 function onSearch(e) {
   e.preventDefault();
 
@@ -40,6 +40,7 @@ function onSearch(e) {
     clearCardList();
     picMarkup(hits);
   });
+  show();
 }
 
 const loadMoreBtn = document.createElement("button");
@@ -51,14 +52,19 @@ loadMoreBtn.addEventListener("click", () => {
     picMarkup(hits);
   });
 });
-
+hide();
 function picMarkup(hits) {
   listEl.insertAdjacentHTML("beforeend", pictureCardTmpl(hits));
+  onLoadMore();
+}
 
-  window.scrollTo({
-    top: document.documentElement.scrollHeight,
-    behavior: "smooth",
-  });
+function onLoadMore() {
+  setTimeout(() => {
+    window.scrollTo({
+      top: listEl.clientHeight + 100,
+      behavior: "smooth",
+    });
+  }, 500);
 }
 
 function clearCardList() {
