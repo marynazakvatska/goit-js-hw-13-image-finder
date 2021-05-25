@@ -44,14 +44,15 @@ function onSearch(e) {
     clearCardList();
     picMarkup(hits);
   });
+  /*   show(); */
 }
 
 function picMarkup(hits) {
   listEl.insertAdjacentHTML("beforeend", pictureCardTmpl(hits));
-  /*   window.scrollTo({
-    top: listEl.scrollHeight,
+  window.scrollTo({
+    top: document.documentElement.offsetHeight,
     behavior: "smooth",
-  }); */
+  });
   /* window.scrollTo({
     top: document.documentElement.offsetHeight,
     behavior: "smooth",
