@@ -16,8 +16,6 @@ document.body.insertAdjacentHTML(
 );
 const refs = {
   searchForm: document.querySelector(".search-form"),
-  /* 
-  list: document.querySelector("ul"), */
 };
 const listEl = document.createElement("ul");
 listEl.classList.add("gallery");
@@ -40,13 +38,12 @@ function onSearch(e) {
   if (apiService.searchQuery === "") {
     return alert("Add something...please");
   }
-  
+
   apiService.resetPage();
   apiService.fetchPicture().then((hits) => {
     clearCardList();
     picMarkup(hits);
   });
-  loadMoreBtn.hide();
 }
 
 function picMarkup(hits) {
