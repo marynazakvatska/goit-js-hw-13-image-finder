@@ -59,7 +59,6 @@ function picMarkup(hits) {
     top: document.documentElement.scrollHeight,
     behavior: "smooth",
   });
-  /* show(); */
 }
 
 function clearCardList() {
