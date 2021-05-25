@@ -22,7 +22,7 @@ listEl.classList.add("gallery");
 document.body.append(listEl);
 
 refs.searchForm.addEventListener("submit", onSearch);
-
+hide();
 function onSearch(e) {
   e.preventDefault();
 
@@ -56,9 +56,10 @@ function picMarkup(hits) {
   listEl.insertAdjacentHTML("beforeend", pictureCardTmpl(hits));
 
   window.scrollTo({
-    top: listEl.scrollHeight,
+    top: document.documentElement.scrollHeight,
     behavior: "smooth",
   });
+  /* show(); */
 }
 
 function clearCardList() {
